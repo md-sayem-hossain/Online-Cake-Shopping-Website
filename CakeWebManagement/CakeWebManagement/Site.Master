@@ -1,0 +1,257 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CakeWebManagement.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> CakeShop</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="Content/Style.css" rel="stylesheet" />
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+    </form>
+
+    <%-- Custom Css Sayem --%>
+
+    <style>
+        .d-flex.align-items-center.mb-3.link-dark.text-decoration-none img {
+            width: 60px;
+        }
+
+        .bg-dark, .navbar-dark {
+            background: black !important;
+        }
+
+        .foo-bak {
+            background-color: #ff57d5 !important;
+            color: white;
+        }
+
+        input[type=search] {
+            width: 100px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url('images/search-icon.jpg');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.5s ease-in-out;
+            transition: width 0.5s ease-in-out;
+        }
+
+            input[type=search]:focus {
+                transition: width 0.5s ease-in-out;
+                width: 100%;
+            }
+
+        .bg-dark, .navbar-dark {
+            background: #ff57d5 !important;
+        }
+
+        .fa-solid.fa-cart-shopping {
+            color: white;
+            font-size: 20px;
+        }
+
+        .cart-btn {
+            margin-right: 24px;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+    </style>
+
+
+    <%-- Custom Nav by sayem --%>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+
+
+            <a class="navbar-brand" href="default.aspx" style="font-weight: bold;">
+
+                <%--<img src="images/logo7070.jpg" alt="Alternate Text" />--%>
+                    CakeShop
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="default.aspx">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+
+
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="paypal">
+                            <input type="hidden" name="cmd" value="_cart">
+
+                            <input type="hidden" name="display" value="1">
+                            <input type="hidden" name="business" value="youremailaddress@yourdomain.com">
+
+                            <input type="hidden" name="shopping_url"
+                                value="https://localhost:44339/Default">
+                            <button class="nav-link" type="submit" name="submit" style="background: none; border: none;">Shop Cart</button>
+                        </form>
+
+
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" runat="server" href="ProductDetails.aspx?id=1">Product</a>
+                    </li>
+
+                </ul>
+
+
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="paypal">
+                            <input type="hidden" name="cmd" value="_cart">
+
+                            <input type="hidden" name="display" value="1">
+                            <input type="hidden" name="business" value="youremailaddress@yourdomain.com">
+
+                            <input type="hidden" name="shopping_url"
+                                value="https://localhost:44339/Default">
+                            <button class="btn cart-btn" type="submit" name="submit"><i class="fa-solid fa-cart-shopping"></i></button>
+                        </form>
+                    </li>
+
+                    <li class="nav-item">
+
+
+
+                        <%
+                            if (Session["Name"] == null)
+                            {%>
+                        <a class="btn btn-success" href="Login.aspx">Sign In</a>
+                        <a class="btn btn-secondary" href="Register.aspx">sign up</a>
+                        <%   }
+                            else
+                            {
+                        %>
+                        <a class="btn btn-secondary" href="Login.aspx">Logout</a>
+                        <% Session["Name"].ToString();
+                            }
+                        %>
+
+
+                        <%--<a class="btn btn-outline-light" href="#">Login</a>--%>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+    <%-- Default Nav Bar --%>
+    <%--<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/">
+                        <img src="/images/logo.jpg" alt="CoffieCo" /></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/Contact">Contact h</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>--%>
+    <div class="body-content">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+        <hr />
+        <section class="foo-bak">
+
+            <div class="container">
+                <footer class="py-5">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="col">
+                                <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                                    <h1 style="font-weight: bold; color: white;">CakeShop</h1>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <h5 style="font-weight: bold;">Section</h5>
+                            <ul class="nav flex-column" style="color: white;">
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted" style="color: white !important;">Home</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted" style="color: white !important;">Shop cart</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted" style="color: white !important;">Login</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted" style="color: white !important;">Registration</a></li>
+                            </ul>
+                        </div>
+
+
+
+                        <div class="col-4 offset-1">
+                            <form>
+                                <h5 style="font-weight: bold;">Join Us here</h5>
+                                <div class="d-flex w-100 gap-2">
+                                    <i class="fa-brands fa-facebook" style="margin-right: 20px; font-size: 35px;"></i>
+                                    <i class="fa-brands fa-instagram" style="margin-right: 20px; font-size: 35px;"></i>
+                                    <i class="fa-solid fa-envelope" style="margin-right: 20px; font-size: 35px;"></i>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </section>
+    </div>
+
+    <%--</form>--%>
+    <script src="Scripts/jquery-3.6.0.min.js"></script>
+    <script src="Scripts/popper.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+</body>
+</html>
